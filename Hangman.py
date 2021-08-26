@@ -85,7 +85,7 @@ def random_word()->list:
 #Función para escoger el modo de juego
 def modo()->list:
     waiting(0,True)
-    tux.tux('Antes de empezar a jugar, escoge entre los siguiente modos de juego...')
+    tux('Antes de empezar a jugar, escoge entre los siguiente modos de juego...')
     print('''     -Fácil-      -Intermedio-     -Difícil-
         
         Escribe F, I o D para seleccionar.''')
@@ -109,14 +109,14 @@ def introducction()->None:
     username = getuser().capitalize()
     waiting(0,True)
     try:
-        tux.tux(f'Bienvenido {username}')
+        tux(f'Bienvenido {username}')
         waiting(5,True)
-        tux.tux(f'En esta ocación, vamos a jugar al juego del ahorcado')
+        tux(f'En esta ocación, vamos a jugar al juego del ahorcado')
         waiting(5,True)
     except KeyboardInterrupt:
         pass
     waiting(0,True)
-    tux.tux(f'Sabes como jugarlo?')
+    tux(f'Sabes como jugarlo?')
     print('''       Si se como jugar = S
 No se como jugar = N''')
     try:
@@ -223,7 +223,7 @@ def main()->None:
     again = None
     while again != False:
         again = game()
-    tux.tux('Gracias por jugar!!! (y no con mis sentimientos :D)')
+    tux('Gracias por jugar!!! (y no con mis sentimientos :D)')
     waiting(3,True)
     
 #Entry point

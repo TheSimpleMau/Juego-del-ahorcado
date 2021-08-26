@@ -12,11 +12,11 @@ def waiting(tiempo:float,clear:bool)->None:
 
 def tutorial()->None:
     system('clear')
-    tux.tux('El juego del ahorcado es muy sencillo de jugar')
+    tux('El juego del ahorcado es muy sencillo de jugar')
     waiting(5,True)
-    tux.tux('Tendrás que adivinar una palabra, y la única información que tienes es cuantas letras hay en esta')
+    tux('Tendrás que adivinar una palabra, y la única información que tienes es cuantas letras hay en esta')
     waiting(7,True)
-    tux.tux('Veamos un ejemplo sencillo')
+    tux('Veamos un ejemplo sencillo')
     waiting(5,True)
     print(f'''      Esta es la horca, ahora no hay nadie, pero
     si te equivocas de palabra, la iras pagando
@@ -260,9 +260,9 @@ def tutorial()->None:
            Has gando!!!
         La palabra es LAPIZ''')
     waiting(4,True)
-    tux.tux('Qué tal la animación eh?. Bueno, no importa')
+    tux('Qué tal la animación eh?. Bueno, no importa')
     waiting(5,True)
-    tux.tux('Ahora que ya sabes jugar, vamos a escoger el modo de juego')
+    tux('Ahora que ya sabes jugar, vamos a escoger el modo de juego')
     waiting(7,True)
 
 if __name__ == '__main__':
