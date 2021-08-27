@@ -9,7 +9,13 @@ Para instalarlo con el controlador de paquetes, escribimos lo siguiente en la te
 ```bash
 git clone https://github.com/TheSimpleMau/Juego-del-ahorcado
 ```
-Y también, habrá que instalar los paquetes, por lo que también tendrá que ejecutar
+También, tendremos que instalar el modulo [cowsay](https://pypi.org/project/cowsay/), esto lo podemos hacer de la siguiente forma
+
+```bash
+pip install cowsay
+```
+
+O si prefiere, igual puede hacerlo desde el archivo de requirements de la siguiente forma
 
 ```bash
 pip -r requirements.txt
@@ -20,3 +26,4 @@ Para empezar a jugar, como cualquier otro archivo de Python, simplemente escribi
 ```bash
 python3 Hangman.py
 ```
+Después, solo queda divertirse.
