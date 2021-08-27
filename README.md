@@ -1,8 +1,8 @@
-# Juego del ahorcado / Hangman game
+# Juego del ahorcado / Hangman game 🐍
 
 Con este programa podremos jugar al juego del ahorcado dentro de python en la terminal.
 
-## Instalación
+## Instalación 🦦
 
 Para instalarlo con el controlador de paquetes, escribimos lo siguiente en la terminal
 
@@ -21,9 +21,9 @@ O si lo prefiere, igual puede hacerlo desde el archivo de requirements de la sig
 pip -r requirements.txt
 ```
 
-## Uso
+## Uso 🐧
 Para empezar a jugar, como cualquier otro archivo de Python, simplemente escribimos en la terminal
 ```bash
 python3 Hangman.py
 ```
-Después, solo queda divertirse.
+Después, solo queda divertirse. 😁
