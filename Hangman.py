@@ -223,7 +223,7 @@ def main()->None:
     again = None
     while again != False:
         again = game()
-    tux('Gracias por jugar!!! (y no con mis sentimientos :D)')
+    tux('Como dijo mi ex, hasta aquí llegamos. Gracias por jugar!!!')
     waiting(3,True)
     
 #Entry point
