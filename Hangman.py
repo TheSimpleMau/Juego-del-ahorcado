@@ -224,8 +224,9 @@ def main()->None:
     while again != False:
         again = game()
     tux('Como dijo mi ex, hasta aquí llegamos. Gracias por jugar!!!')
-    waiting(3,True)
+    waiting(6,True)
     
+
 #Entry point
 if __name__ == '__main__':
     main()
