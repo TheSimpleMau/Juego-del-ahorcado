@@ -15,7 +15,7 @@ También, tendremos que instalar el modulo [cowsay](https://pypi.org/project/cow
 pip install cowsay
 ```
 
-O si prefiere, igual puede hacerlo desde el archivo de requirements de la siguiente forma
+O si lo prefiere, igual puede hacerlo desde el archivo de requirements de la siguiente forma
 
 ```bash
 pip -r requirements.txt
