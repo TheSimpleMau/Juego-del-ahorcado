@@ -27,11 +27,8 @@ def split(palabra):
 def replaceword(OG_word:list,making_word:str,letter:str)->list:
     new_word = list(making_word)
     counter = 0
-    underscore = '_'
     for letra in OG_word:
-        if underscore == letra:
-            pass
-        elif letter == letra:
+        if letter == letra:
             new_word[counter] = letter
         elif letter != letra:
             pass
@@ -66,18 +63,20 @@ def join_list(lista:list)->list:
     lista = "".join(lista)
     return lista
 
-#Función para que, dentro de nuestro archivo "data.txt", creamos un diccionario con todas las palabras que tienes
-#Junto con su lista de letras que te tiene la misma
+#Generando un diccionario con todas las palabras que se encuentran dentro
+#de nuestro archivo "data.txt" con todas las palabras
+words = {}
+with open("data.txt","r",encoding="utf-8") as f:
+    for word in f:
+        word = word.upper()
+        letters = split(word)
+        if '\n' in word:
+            letters = letters[:-1]
+            word = join_list(letters)
+        words.update({f'{word}':letters})
+
+#Función para seleccionar una palabra dentro del diccionario 'words' y jugar con esa palabra.
 def random_word()->list:
-    words = {}
-    with open("data.txt","r",encoding="utf-8") as f:
-        for word in f:
-            word = word.upper()
-            letters = split(word)
-            if '\n' in word:
-                letters = letters[:-1]
-                word = join_list(letters)
-            words.update({f'{word}':letters})
     makeing_list = list(words.items())
     random_choice = random.choice(makeing_list)
     return random_choice
@@ -128,6 +127,7 @@ No se como jugar = N''')
         jugar = 's'
     if jugar == 's':
         print('Genial!!! Entonces vamos a hecharnos una partida')
+        waiting(7,True)
     else:
         tutorial()
 
@@ -145,8 +145,8 @@ def game()->bool:
         exit()
     
     # Selección de la palabra aleatoria y otros arreglos
-    no_attemps = player_mode[2]
-    attemp = 0
+    no_attempts = player_mode[2]
+    attempt = 0
     word_playing = random_word()
     len_word= len(word_playing[1])
     user_try_word = [' _ ']*len_word
@@ -154,13 +154,13 @@ def game()->bool:
 
     # Inicio del juego
     waiting(0,True)
-    while no_attemps >= attemp:
+    while no_attempts >= attempt:
         print(f'''
-        {player_mode[0][attemp]}
+        {player_mode[0][attempt]}
 
             {join_list(user_try_word)}
 
-    Tienes {no_attemps} intentos y has usado {attemp}
+    Tienes {no_attempts} intentos y has usado {attempt}
     Has usado las letras: {join_list(addcoma(letters_used))}
 
 ''')
@@ -172,6 +172,8 @@ def game()->bool:
             pass
         # Obteniendo la letra del usuario
         user_letter = str(input('       Escibe una letra: ')).upper()
+        # if len(user_letter) > 1:
+        #     print('     Escribe unicamente una letra por jugada.')
         # Marcar que letras hemos usados
         letters_used.append(user_letter)
         # Revision despues de la palabra con la palabra formada del usuario
@@ -181,13 +183,13 @@ def game()->bool:
         ### Condiciones para puntaje:
         #Si la palabra formada por usuario no ha cambiado con respecto a la variable check_after
         if user_try_word == check_after:
-            attemp+=1
-            if attemp != no_attemps:
+            attempt+=1
+            if attempt != no_attempts:
                 wait = input('''    Esa letra no está, presione enter para continuar ''')
                 pass
-            elif attemp == no_attemps:
+            elif attempt == no_attempts:
                 waiting(0,True)
-                print(player_mode[0][attemp])
+                print(player_mode[0][attempt])
                 print(f'Has perdido, la palabra que estaba buscando era {word_playing[0]}')
                 again = str(input('Quieres volver a jugar? (Escribe S o N) ')).lower()
                 if again == 's':
@@ -206,11 +208,16 @@ def game()->bool:
                     assert(again == 's' or again == 'n')
                 except AssertionError:
                     print('Escribe solo S para sí y N para no. De todas formas, vamos a jugar de nuevo.')
+                    waiting(5,False)
                     return True
                 if again == 's':
                     return True
-                else:
+                elif again == 'n':
                     return False
+                elif again == '':
+                    print('Escribe solo S para sí y N para no. De todas formas, vamos a jugar de nuevo.')
+                    waiting(5,False)
+                    return True
             else:
                 pass
         waiting(0,True)
@@ -219,7 +226,6 @@ def game()->bool:
 #'game' en un ciclo while para jugar hasta que el usuario decida
 def main()->None:
     introducction()
-    waiting(3,True)
     again = None
     while again != False:
         again = game()

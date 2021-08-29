@@ -24,7 +24,7 @@ def tutorial()->None:
         {hangmanpic[0]}
 
                 _ _ _ _     #En estos guiones bajos, iran apareciendo las letras
-                    #a las cuales les vayas atinando de la palabra.
+                            #a las cuales les vayas atinando de la palabra.
         
     En todos los modos de juego, te apoyaré con las palabras que
     Haz utilizado, pero si selecciónas el modo de juego fácil o 
@@ -65,7 +65,7 @@ def tutorial()->None:
         Psst, en la palabra hay 1 vocal
             Escribe una letra: X
             Esa palabra no esta, presione Enter para continuar 
-        #Y entonces, al dar enter, entonces...
+        #Y entonces, al dar enter..
         
 
 ''')
