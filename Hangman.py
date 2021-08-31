@@ -7,9 +7,9 @@
 ######Modulos a importar######
 ##############################
 
-from getpass import getuser #Para obtener el nombre del usuario
 from HangmanPics import hangmanpic, WIN #Importamos de otro archivo ciertas figuras
 from TutorialHangman import tutorial, waiting #La primera función es para el tutorial, es segundo es para dar "tiempos de carga"
+from getpass import getuser #Para obtener el nombre del usuario
 from cowsay import tux #Para poner a Tux (la mascota de Linux)
 import random #Para escoger nuestra palabra al azar
 
@@ -19,8 +19,8 @@ import random #Para escoger nuestra palabra al azar
 ###############################################
 
 #Función para convertir una palabra en una lista
-def split(palabra):
-    return [char for char in palabra]
+# def split(palabra:str):
+#     return [char for char in palabra]
 
 
 #Función para remplazar una lista con la letra que buscamos de la palabra orginal
@@ -30,8 +30,8 @@ def replaceword(OG_word:list,making_word:str,letter:str)->list:
     for letra in OG_word:
         if letter == letra:
             new_word[counter] = letter
-        elif letter != letra:
-            pass
+        # elif letter != letra:
+        #     pass
         counter+=1
     return new_word
 
@@ -69,7 +69,7 @@ words = {}
 with open("data.txt","r",encoding="utf-8") as f:
     for word in f:
         word = word.upper()
-        letters = split(word)
+        letters = list(word)
         if '\n' in word:
             letters = letters[:-1]
             word = join_list(letters)
@@ -151,6 +151,7 @@ def game()->bool:
     len_word= len(word_playing[1])
     user_try_word = [' _ ']*len_word
     letters_used = []
+    no_vowls = vocales(word_playing[1])
 
     # Inicio del juego
     waiting(0,True)
@@ -166,14 +167,9 @@ def game()->bool:
 ''')
         # Si pista exsite
         if pista == True:
-            no_vowls = vocales(word_playing[1])
             print(f'    Pssst, en la palabra hay {no_vowls[0]} vocales\n')
-        else:
-            pass
         # Obteniendo la letra del usuario
         user_letter = str(input('       Escibe una letra: ')).upper()
-        # if len(user_letter) > 1:
-        #     print('     Escribe unicamente una letra por jugada.')
         # Marcar que letras hemos usados
         letters_used.append(user_letter)
         # Revision despues de la palabra con la palabra formada del usuario
