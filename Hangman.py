@@ -41,7 +41,7 @@ def vocales(word:list)->list:
     vocales = []
     vowls = ['A','E','I','O','U']
     for letter in word:
-        if letter in vowls:
+        if letter in vowls and letter in vocales:
             if letter in vocales:
                 pass
             else:
@@ -178,7 +178,10 @@ def game()->bool:
         user_try_word = replaceword(word_playing[1],user_try_word,user_letter)
         ### Condiciones para puntaje:
         #Si la palabra formada por usuario no ha cambiado con respecto a la variable check_after
-        if user_try_word == check_after:
+        if user_try_word in letters_used:
+            print('Esa letra ya la usaste, ponte chido!!!')
+            attempt+=1
+        elif user_try_word == check_after:
             attempt+=1
             if attempt != no_attempts:
                 wait = input('''    Esa letra no está, presione enter para continuar ''')
