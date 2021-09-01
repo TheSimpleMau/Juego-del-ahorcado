@@ -41,7 +41,7 @@ def vocales(word:list)->list:
     vocales = []
     vowls = ['A','E','I','O','U']
     for letter in word:
-        if letter in vowls and letter in vocales:
+        if letter in vowls:
             if letter in vocales:
                 pass
             else:
@@ -51,8 +51,9 @@ def vocales(word:list)->list:
 
 #Función para añandir una coma para despues hacer la lista de las letras que llevamos
 def addcoma(letra:list)->list:
-    exaple = []
-    if letra == exaple:
+    if len(letra) == 0:
+        return letra
+    elif letra[len(letra)-1] == ',':
         return letra
     else:
         letra += ','
@@ -127,7 +128,7 @@ No se como jugar = N''')
         jugar = 's'
     if jugar == 's':
         print('Genial!!! Entonces vamos a hecharnos una partida')
-        waiting(7,True)
+        waiting(5,True)
     else:
         tutorial()
 
@@ -170,20 +171,27 @@ def game()->bool:
             print(f'    Pssst, en la palabra hay {no_vowls[0]} vocales\n')
         # Obteniendo la letra del usuario
         user_letter = str(input('       Escibe una letra: ')).upper()
+        iterador = 0
         # Marcar que letras hemos usados
-        letters_used.append(user_letter)
+        if letters_used != []:
+            for k in letters_used:
+                if k == user_letter:
+                    iterador = 1
+                    break
+        if iterador == 0:
+            letters_used.append(user_letter)
         # Revision despues de la palabra con la palabra formada del usuario
         check_after = list(user_try_word)
         # Remplazo de letras correctas
         user_try_word = replaceword(word_playing[1],user_try_word,user_letter)
         ### Condiciones para puntaje:
         #Si la palabra formada por usuario no ha cambiado con respecto a la variable check_after
-        if user_try_word in letters_used:
-            print('Esa letra ya la usaste, ponte chido!!!')
+        if user_try_word == check_after:
             attempt+=1
-        elif user_try_word == check_after:
-            attempt+=1
-            if attempt != no_attempts:
+            if iterador == 1:
+                wait = input('''    Esa letra ya la usaste, ponte chido!!! (presiona enter para continuar) ''')
+                pass
+            elif attempt != no_attempts:
                 wait = input('''    Esa letra no está, presione enter para continuar ''')
                 pass
             elif attempt == no_attempts:
